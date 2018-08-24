@@ -1,13 +1,14 @@
 import { BASE_API_PATH } from 'utils/constants';
 import request from 'utils/request';
-
+import qs from 'qs';
 /**
  * 获取优惠券列表
  * @param {json Object} data 
  * @returns {promise} function
  */
 export function fetchCoupon(data) {
-  return request(`${BASE_API_PATH}/coupon/my?${data}`);
+  const querystring = qs.stringify(data);
+  return request(`${BASE_API_PATH}/coupon/my?${querystring}`);
 }
 
 /**
@@ -26,5 +27,6 @@ export function addCoupon(data) {
  * @param {json Object} data 
  */
 export function fetchHistoryCoupon(data) {
-  return request(`${BASE_API_PATH}/coupon/my/history?${data}`);
+  const querystring = qs.stringify(data);
+  return request(`${BASE_API_PATH}/coupon/my/history?${querystring}`);
 }

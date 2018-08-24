@@ -6,35 +6,45 @@ const immutableState = Immutable.fromJS({
   historyList: [],
   total: null,
   page: null,
+  pageSize: null,
 });
 
 export default {
   namespace: 'coupon',
   state: immutableState,
   reducers: {
-    save(state, { payload: { data: list, total, page } }) {
-      return { ...state, list, total, page };
+    save(state, { payload: { list, total, page, pageSize} }) {
+      return { ...state, list, total, page, pageSize };
     },
   },
   effects: {
     *getCoupon({payload: values}, {call, put}) {
-      const {data} = yield call(couponService.fetchCoupon, values);
-      yield put({
-        type: 'save',
-        payload: {
-          data
-        },
-      });
+      const { data } = yield call(couponService.fetchCoupon, values);
+      if(data.code === 0) {
+        yield put({
+          type: 'save',
+          payload: {
+            list: data.data.list,
+            total: data.data.total,
+            page: values._page,
+            pageSize: values._pageSize,
+          },
+        });
+      }
+
     },
-    *add({ payload: values }, { call }) {
-      yield call(couponService.addCoupon, values);
+    *add({ payload: values, toast }, { call}) {
+      const {data} = yield call(couponService.addCoupon, values);
+      if(data.code === 0) {
+        toast.info(data.message, 2);
+      }
     },
   },
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-        if (pathname === '/users') {
-          dispatch({ type: 'fetch', payload: query });
+        if (pathname === '/coupon') {
+          dispatch({ type: 'getCoupon', payload: {...query, _page: 1, _pageSize: 100, orderby: 'date'} });
         }
       });
     },

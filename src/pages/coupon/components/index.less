@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+@highlight-color: #fa5575;
+@disable-color: #999;
+@default-text-color: #8c8c8c;
+
+.couponPage {
+  padding: 10px 15px;
+  min-height: 100vh;  
+}
+
+.lightGray {
+  background-color: #f4f4f4;
+}
+.couponList {
+  margin-top: 16px;
+}
+
+:global {
+  .am-list-body {
+    background-color: transparent;
+  }
+  .am-list-footer {
+    padding: 0;
+  }
+  .add-coupon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input, button, .coupon-list {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .am-list {
+      width: 75%;
+    }
+    .am-list-item {
+      border: 1px solid #eee;
+      height: 32px;
+      min-height: 32px;
+      .am-input-control {
+        font-size: inherit;
+        input {
+          font-size: inherit;
+        }
+      }
+      &.am-input-item {
+        height: 32px;
+      }
+    }
+    .addcode-button {
+      margin-left: 10px;
+      width: 25%;
+      .am-button {
+        border: 0 none;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 1px;
+        font-size: inherit;
+        color: #fff;
+        background-color: @highlight-color;
+      }
+      .am-button-disabled {
+        background-color: #ccc;
+      }
+    }
+  } 
+  .coupon-item-lists {
+    li {
+      // box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      padding: 8px;
+      position: relative;
+    }
+    .coupon-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      background: url('../../../assets/images/coupon/img-coupons.svg') repeat;
+      padding: 18px 8px;
+    }
+    .coupon-money {
+      width: 25%;
+      text-align: center;
+      font-size: 18px;
+      color: @highlight-color;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      em {
+        font-size: 35px;
+        line-height: 0.9;
+      }
+      em, span {
+        display: block;
+      }
+      i {
+        color: #262626;
+        font-size: 15px;
+        font-style: normal;
+        &.decimal {
+          color: @highlight-color;
+          margin-right: 5px;
+          font-weight: 500;
+        }
+      }
+    }
+    .coupon-use-info {
+      width: 75%;
+      .coupon-card-title {
+        font-size: 16px;
+        color: #262626;
+        font-weight: 500;
+      }
+      .coupon-rule, .coupon-rule-desc {
+        margin-top: 10px;
+      }
+      p {
+        font-size: 12px;
+        color: @default-text-color;
+        line-height: normal;
+      }
+    }
+    .card-middle-radian {
+      height: 20px;
+    }
+    .coupon-rule-desc {
+      box-sizing: border-box;
+      width: 100%;
+      line-height: 1.5;
+      color: #999;
+    }
+    .ellipsis {
+      overflow: hidden;
+      text-overflow : ellipsis;
+      white-space : nowrap;
+    }
+  }
+  .coupon-buttom {
+    padding: 15px 0;
+    color: @default-text-color;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    html:not([data-scale]) .am-button-primary::before {
+      border: 0 none;
+    }
+    html:not([data-scale]) .am-button::before  {
+      border: 0 none;
+    }
+    html:not([data-scale]) .am-list-body::before {
+      height: 0;
+    }
+  }
+}

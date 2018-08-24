@@ -23,17 +23,16 @@ export default async function request(url, options) {
   // 获取 token
   let token;
   const transientToken = localCache.get('userCert');
-  if(transientToken && Object.keys(transientToken).length > 0 && transientToken.userCert.jwt.eatojoy.token) {
-    token = transientToken.userCert.jwt.eatojoy.token;
+  if(transientToken && Object.keys(transientToken).length > 0 && transientToken.jwt.eatojoy.token) {
+    token = transientToken.jwt.eatojoy.token;
   }
 
   // 配置默认headers
   const headers = Object.assign({
     'Content-Type': 'application/json;charset=UTF-8',
+    accept: 'application/json',
   }, options && options.headers);
-  if (options && options.body && (options.body instanceof FormData)) {
-    delete headers['Content-Type'];
-  }
+
   if (token) {
     headers[HEADER_TOKEN_NAME] = token;
   }
@@ -43,17 +42,17 @@ export default async function request(url, options) {
     method: 'GET',
     mode: 'cors',
     credentials: 'include',
-  }, options, { headers });
-  // 修复url中多余的斜杠
-  const fixUrl = url.replace(/\/\//g, '/').replace(/:\/([^/])/, '://$1');
+  }, options, { headers: headers });
+
   // 非GET方式不允许缓存
   if (settings.method.toUpperCase() !== 'GET') {
     settings['Cache-Control'] = 'no-cache';
   }
+  const fixUrl = url.replace(/\/\//g, '/').replace(/:\/([^/])/, '://$1');
 
-
+  // fetch
   const response = await fetch(fixUrl, settings);
-
+  
   checkStatus(response);
 
   const data = await response.json();

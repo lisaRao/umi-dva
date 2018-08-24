@@ -35,19 +35,19 @@ class Index extends Component {
         </section>
         <section className={styles.mineOption} >
           <ul className="account-menu">
-            <li onClick={(e) => this.toLink(e, '/collect/', true)}>
+            <li onClick={(e) => this.toLink(e, '/collect', true)}>
                 <span className="mine-option-icon mine-option-collect">我的收藏</span>
                 <span className="mine-option-arrow"></span>
             </li>
-            <li onClick={(e) => this.toLink(e, '/coupon/', false)} >
+            <li onClick={(e) => this.toLink(e, '/coupon', false)} >
                 <span className="mine-option-icon mine-option-coupon">我的優惠券</span>
                 <span className="mine-option-arrow"></span>
             </li>
-            <li onClick={(e) => this.toLink(e, '/custom/', true)}>
+            <li onClick={(e) => this.toLink(e, '/custom', true)}>
                 <span className="mine-option-icon mine-option-custom">我的客服</span>
                 <span className="mine-option-arrow"></span>
             </li>
-            <li onClick={(e) => this.toLink(e, '/advise/', true)}>
+            <li onClick={(e) => this.toLink(e, '/advise', true)}>
                 <span className="mine-option-icon mine-option-advise">意見反映</span>
                 <span className="mine-option-arrow"></span>
             </li>

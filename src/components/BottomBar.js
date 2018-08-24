@@ -19,13 +19,13 @@ class BottomBar extends Component {
     switch (item) {
       case 'index':
       default:
-        router.push('/home/');
+        router.push('/home');
         break;
       case 'order':
-        router.push('/order/');
+        router.push('/order');
         break;
       case 'account':
-        router.push('/mine/')
+        router.push('/mine')
         break;
     }
   }

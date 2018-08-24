@@ -3,8 +3,11 @@ html, body, :global(#root) {
   height: 100%;
 }
 
-html, body, div, p, section, span, ul, li {
+html, body, div, p, section, span, ul, li, h3, em {
   margin: 0;
   padding: 0;
 }
 
+ul, li {
+  list-style: none;
+}
