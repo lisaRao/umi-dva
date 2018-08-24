@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="280px" height="94px" viewBox="0 0 280 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>img_coupons@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="首頁+搜索" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首頁_优惠券弹窗" transform="translate(-48.000000, -309.000000)">
+            <rect fill="#FFFFFF" x="0" y="0" width="375" height="667"></rect>
+            <g id="Group-5" transform="translate(48.000000, 309.000000)" stroke-width="0.5">
+                <g id="img_coupons">
+                    <path d="M61.7549086,93.75 C61.8861346,90.4141167 64.6319484,87.75 68,87.75 C71.3680516,87.75 74.1138654,90.4141167 74.2450914,93.75 L279.75,93.75 L279.75,0.25 L74.205438,0.25 C74.2350567,0.49755558 74.25,0.747859506 74.25,1 C74.25,4.45177969 71.4517797,7.25 68,7.25 C64.5482203,7.25 61.75,4.45177969 61.75,1 C61.75,0.747859512 61.7649433,0.497555591 61.7945619,0.25 L0.25,0.25 L0.25,93.75 L61.7549086,93.75 Z" id="Combined-Shape" stroke="#F3B57D" fill="#FFFFFF"></path>
+                    <path d="M68.5,7.5 L68.5,87.5" id="Line-5" stroke="#F3B882" fill="#8C8C8C" opacity="0.800000012" stroke-linecap="square" stroke-dasharray="6,4,6,4"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

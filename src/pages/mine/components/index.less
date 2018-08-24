@@ -1,0 +1,116 @@
+/**
+*  个人中心
+*/
+@px: 0.02rem;
+@color: #FA5575;
+
+.indexPage {
+  background: #f7f8fa;
+  height: 100%;
+}
+.loginButton {
+  width: 118 * @px;
+  height: 32 * @px;
+  line-height: 32 * @px;
+  margin: 45 * @px auto 45 * @px;
+  border: 2 * @px @color solid;
+  border-radius: 16 * @px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14 * @px;
+  color: @color;
+}
+.mineOption {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #fff;
+}
+:global {
+  .none {
+    display: none !important;
+  }
+  .mine-wall {
+    background: #fff;
+    height: 1rem;
+    margin-bottom: 20px;
+  }
+  ul.account-menu {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    li {
+      width: 360 * @px;
+      height: 43 * @px;
+      overflow: hidden;
+      line-height: 43 * @px;
+      font-size: 15 * @px;
+      color: #585858;
+      margin-left: 15 * @px;
+      border-bottom: 1 * @px solid #eeeeee;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      .mine-option-icon {
+          position: relative;
+          padding-left: 30 * @px;
+          height: 100%;
+          min-width: 20 * @px;
+          min-height: 20 * @px;
+          display: inline-block;
+      }
+      .mine-option-icon:after {
+          content: "";
+          width: 20 * @px;
+          height: 20 * @px;
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          top: 11.5 * @px;
+      }
+      .mine-option-collect:after {
+          background: url("../../../assets/images/ico_my_collection@2x.png") no-repeat center center;
+          background-size: 100% 100%;
+      }
+      .mine-option-custom:after {
+          background: url("../../../assets/images/ico_my_service@2x.png") no-repeat center center;
+          background-size: 100% 100%;
+      }
+      .mine-option-advise:after {
+          background: url("../../../assets/images/ico_my_editor@2x.png") no-repeat center center;
+          background-size: 100% 100%;
+      }
+      .mine-option-join:after {
+          background: url("../../../assets/images/ico_my_store@2x.png") no-repeat center center;
+          background-size: 100% 100%;
+      }
+      .mine-option-arrow {
+          position: relative;
+          padding-right: 24 * @px;
+          height: 100%;
+          min-width: 20 * @px;
+          min-height: 20 * @px;
+          display: inline-block;
+      }
+      .mine-option-arrow:after {
+          content: "";
+          width: 8 * @px;
+          height: 12 * @px;
+          display: block;
+          background: url("../../../assets/images/ico_location_next@2x.png") no-repeat center center;
+          background-size: 100% 100%;
+          position: absolute;
+          right: 23 * @px;
+          top: 15.5 * @px;
+      }
+      .mine-option-coupon:after {
+          background: url("../../../assets/images/ico-my-coupon.svg") no-repeat center center;
+          background-size: 100% 100%;
+      }
+      }
+      li:last-child {
+          border: 0;
+      }
+  }
+}

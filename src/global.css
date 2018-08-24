@@ -1,0 +1,10 @@
+
+html, body, :global(#root) {
+  height: 100%;
+}
+
+html, body, div, p, section, span, ul, li {
+  margin: 0;
+  padding: 0;
+}
+

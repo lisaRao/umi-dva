@@ -1,0 +1,67 @@
+@color: #fa5575;
+@px: 0.02rem;
+
+.appNavBox {
+  max-width: 750px;
+  width: 100%;
+  height: @px * 49;
+  overflow: hidden;
+  border-top: @px * 1 #dddddd solid;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  background: #fff;
+  display: -webkit-flex;
+  display: flex;  
+}
+.appNavCell {
+  flex: 1 1 33.33%;
+  margin-top: @px * 4;  
+}
+:global {
+  .app-nav-icon {
+    width: @px * 25;
+    height: @px * 25;
+    clear: both;
+    margin: 0 auto;
+    text-indent: -99em;
+  }
+  .app-nav-index {
+    background: url("../assets/images/tab-index.svg") no-repeat;
+    background-size: 100%;
+  }
+  .app-nav-order {
+      background: url("../assets/images/tab-order.svg") no-repeat;
+      background-size: 100%;
+  }
+  .app-nav-account {
+      background: url("../assets/images/tab-my.svg") no-repeat;
+      background-size: 100%;
+  }
+  .app-nav-title {
+      height: @px * 16;
+      line-height: @px * 16;
+      text-align: center;
+      font-size: @px * 12;
+      color: #666666;
+      margin-top: @px * 3;
+  }
+  .appNavPick {
+    .app-nav-index {
+      background: url("../assets/images/ico-tarbar-index-pre.svg") no-repeat;
+      background-size: 100%;
+    }
+    .app-nav-order {
+        background: url("../assets/images/tab-order-pre.svg") no-repeat;
+        background-size: 100%;
+    }
+    .app-nav-account {
+        background: url("../assets/images/tab-my-pre.svg") no-repeat;
+        background-size: 100%;
+    }
+    .app-nav-title {
+        color: @color;
+    }
+  }
+}
+
