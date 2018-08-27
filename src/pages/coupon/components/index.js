@@ -18,6 +18,8 @@ class Index extends Component {
       pageSize: 100,
       inputValue: '',
       submiting: false,
+      initLoad: true,
+      more: false,
     }
   }
   handleLeftClick = () => {
@@ -62,6 +64,7 @@ class Index extends Component {
     // // 请求数据
     // dispatch({ type: 'coupon/getCoupon', payload: { _page: page + 1, _pageSize: 100, orderby: 'date'} })
   };
+
   // 优惠多少钱和 折扣度区分显示 根据coupon_type
   filterCouponMoney = (item) => {
     let moneyDom;
