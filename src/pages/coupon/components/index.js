@@ -54,12 +54,13 @@ class Index extends Component {
     return footer;
   }
   onEndReached = () => {
-    const { loading, page, pageSize, list, dispatch } = this.props;
-    if (loading) return false;
-    // 判断是否需要翻页
-    if(list.length < pageSize) return;
-    // 请求数据
-    dispatch({ type: 'coupon/getCoupon', payload: { _page: page + 1, _pageSize: 100, orderby: 'date'} })
+    // 暂不需要
+    // const { loading, page, pageSize, list, dispatch } = this.props;
+    // if (loading) return false;
+    // // 判断是否需要翻页
+    // if(list.length < pageSize) return;
+    // // 请求数据
+    // dispatch({ type: 'coupon/getCoupon', payload: { _page: page + 1, _pageSize: 100, orderby: 'date'} })
   };
   // 优惠多少钱和 折扣度区分显示 根据coupon_type
   filterCouponMoney = (item) => {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "umi dev",
+    "start": "PORT=8001 umi dev",
     "build": "umi build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint"

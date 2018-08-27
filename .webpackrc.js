@@ -4,10 +4,8 @@ export default {
   "publicPath": "/static/",
   "proxy": {
     "/api": {
-      // "target": "http://jsonplaceholder.typicode.com/",
       "target": "http://eatojoy-api.hktester.com",
       "changeOrigin": true,
-      // "pathRewrite": { "^/api" : "" }
     }
   },
   "alias": {
