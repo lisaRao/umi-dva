@@ -1,9 +1,9 @@
-import Index from './components/index';
+import History from './components/history';
 
 export default () => {
   return (
     <div>
-      <Index />
+      <History />
     </div>
   )
 }

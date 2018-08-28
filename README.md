@@ -72,7 +72,8 @@
         - coupon.js
       + services
         - coupon.js 
-    - page.js   //(如果使用自动生成路由这个文件必须存在，且命名是page.js/index.js)
+    - history.js
+    - index.js   //(如果使用自动生成路由这个文件必须存在)
   ```
   - 如需自定义配置 可参看官网配置或者询问 lisa
 

@@ -2,19 +2,36 @@ import Immutable from 'immutable';
 import * as couponService from '../services/coupon';
 
 const immutableState = Immutable.fromJS({
-  list: [],
-  historyList: [],
-  total: null,
-  page: null,
-  pageSize: null,
+  couponList: [],
+  couponHistoryList: [],
+  couponData: {
+    total: null,
+    page: null,
+    pageSize: null,
+  },
+  listCode: 0,
+  historyCode: 0,
+  historyData: {
+    total: null,
+    page: null,
+    pageSize: null,
+  },
 });
 
 export default {
   namespace: 'coupon',
   state: immutableState,
   reducers: {
-    save(state, { payload: { list, total, page, pageSize} }) {
-      return { ...state, list, total, page, pageSize };
+    save(state, {
+      payload: {
+        couponList, 
+        couponData, 
+        listCode, 
+        couponHistoryList,
+        historyData,
+        historyCode
+      }}) {
+      return { ...state, couponList, couponData, listCode, couponHistoryList, historyData, historyCode };
     },
   },
   effects: {
@@ -24,14 +41,45 @@ export default {
         yield put({
           type: 'save',
           payload: {
-            list: data.data.list,
-            total: data.data.total,
-            page: values._page,
-            pageSize: values._pageSize,
+            couponList: data.data.list,
+            couponData: {
+              ...data.data, 
+              page: values._page,
+              pageSize: values._pageSize,
+            }
+          },
+        });
+      } else {
+        yield put({
+          type: 'save',
+          payload: {
+            listCode: data.code
           },
         });
       }
-
+    },
+    *getHistoryCoupon({payload: values}, {call, put}) {
+      const { data } = yield call(couponService.fetchHistoryCoupon, values);
+      if(data.code === 0) {
+        yield put({
+          type: 'save',
+          payload: {
+            couponHistoryList: data.data.list,
+            historyData: {
+              ...data.data, 
+              page: values._page,
+              pageSize: values._pageSize,
+            }
+          },
+        });
+      } else {
+        yield put({
+          type: 'save',
+          payload: {
+            historyCode: data.code
+          },
+        });
+      }
     },
     *add({ payload: values, toast }, { call}) {
       const {data} = yield call(couponService.addCoupon, values);
@@ -43,8 +91,12 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
+        const orderby = query.from || 'date';
         if (pathname === '/coupon') {
-          dispatch({ type: 'getCoupon', payload: {...query, _page: 1, _pageSize: 100, orderby: 'date'} });
+          dispatch({ type: 'getCoupon', payload: {...query, _page: 1, _pageSize: 100, orderby: orderby} });
+        }
+        if(pathname === '/coupon/history') {
+          dispatch({ type: 'getHistoryCoupon', payload: {...query, _page: 1, _pageSize: 100 } });
         }
       });
     },
