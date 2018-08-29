@@ -42,6 +42,7 @@ export default {
           type: 'save',
           payload: {
             couponList: data.data.list,
+            listCode: data.code,
             couponData: {
               ...data.data, 
               page: values._page,
@@ -65,6 +66,7 @@ export default {
           type: 'save',
           payload: {
             couponHistoryList: data.data.list,
+            historyCode: data.code,
             historyData: {
               ...data.data, 
               page: values._page,

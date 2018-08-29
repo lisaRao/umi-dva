@@ -133,7 +133,7 @@ class Index extends Component {
     if(noCoupon && noCoupon.verdorsId === this.state.verdorsId) {
       isCouponInfo = noCoupon.hasCoupon;
     }
-    const historyRender = (pageType && pageType === 'cart') ? null : <a className="go-history-coupon" onClick={this.viewHistory}> 查看過往優惠券> </a>;
+    const historyRender = (!list && pageType && pageType === 'cart') ? null : <a className="go-history-coupon" onClick={this.viewHistory}> 查看過往優惠券> </a>;
     const noSelected = (pageType && pageType === 'cart') ? <div className="buttom-block" onClick={this.noSelectedCoupon}>不使用優惠券</div>: null;
     const row = rowData => {
       return (<li key={`${rowData.coupon_user_code}`} onClick={(e) => this.clickhandle(e, rowData)} className={!rowData.is_discount && pageType === 'cart' ? 'disable-use grayscale' : 'default'}>
@@ -189,7 +189,7 @@ class Index extends Component {
             </div>
           </div>
           <div className={styles.couponList}>
-            { code ? (code === 0 && total > 0 ? renderList() : <div className={styles.noContent}><p className={styles.noContentIco}></p><p className={styles.txt}>您未有優惠券</p></div>): null }
+            { list ? code === 0 && total > 0 ? renderList() : <div className={styles.noContent}><p className={styles.noContentIco}></p><p className={styles.txt}>您未有優惠券</p></div>: null }
             {historyRender}
             {noSelected}
           </div>
@@ -201,13 +201,14 @@ class Index extends Component {
 
 function mapStateToProps(state) {
   const { couponList, couponData, listCode } = state.coupon;
+
   const data = couponData ? {
     total: couponData.total,
     page: couponData.page,
     pageSize: couponData.pageSize,
   }: {};
   return {
-    data,
+    ...data,
     code : listCode,
     list: couponList,
     loading: state.loading.models.coupon,

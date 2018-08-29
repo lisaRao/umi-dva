@@ -37,14 +37,41 @@ class History extends Component {
     // 请求数据
     dispatch({ type: 'coupon/getHistoryCoupon', payload: { _page: page + 1, _pageSize: 100} })
   };
-
+  // 优惠多少钱和 折扣度区分显示 根据coupon_type
+  filterCouponMoney = (item) => {
+    let moneyDom;
+    // 优惠金额
+    if (item.coupon_type === 1) {
+      moneyDom = (<h3 className="coupon-money">
+        <span>$</span> <em>{item.coupon_type_value.toFixed(0)}</em>
+      </h3>);
+    }
+    // 折扣额度
+    if (item.coupon_type === 2) {
+      // 整数显示
+      let num1, num2;
+      if (item.coupon_type_value % 1 === 0) {
+        moneyDom = (<h3 className="coupon-money">
+          <em>{item.coupon_type_value}</em><i>折</i>
+        </h3>);
+      } else {
+        num1 = item.coupon_type_value.toFixed(1).toString().split('.')[0];
+        num2 = item.coupon_type_value.toFixed(1).toString().split('.')[1];
+        moneyDom = (<h3 className="coupon-money">
+          <em>{num1}</em>.<i className="decimal">{num2}</i><i> 折 </i>
+        </h3>);
+      }
+    }
+    return moneyDom;
+  }
   render() {
     const { list, total, code } = this.props;
     const { dataSource, useBodyScroll, pageSize } = this.state;
     const row = rowData => {
+      const statusCode = rowData.code_status ? rowData.code_status : 0;
       return (<li key={`${rowData.code}`} className="disable-use">
         <div className="coupon-info">
-          <p className="coupon-status expire">{couponCNStatus[rowData.code_status]}</p>
+          <p className="coupon-status expire">{couponCNStatus[statusCode]}</p>
           {this.filterCouponMoney(rowData)}
           <div className="coupon-use-info">
             <h3 className="coupon-card-title">{rowData.coupon_name}</h3>
@@ -79,7 +106,7 @@ class History extends Component {
         <Header titleTxt="歷史優惠券" customStyle="has-bottom-border" handleLeftClick={this.handleLeftClick} />
         <div className={`${styles.lightGray} ${styles.couponPage}`}>
           <div className={styles.couponList}>
-            { code ? (code === 0 && total > 0 ? renderList() : <div className={styles.noContent}><p className={styles.noContentIco}></p><p className={styles.txt}>您未有優惠券</p></div>): null }
+            { list ? (code === 0 && total > 0 ? renderList() : <div className={styles.noContent}><p className={styles.noContentIco}></p><p className={styles.txt}>您未有優惠券</p></div>): null }
           </div>
         </div>
       </div>
@@ -95,7 +122,7 @@ function mapStateToProps(state) {
     pageSize: historyData.pageSize,
   }: {};
   return {
-    data,
+    ...data,
     list: couponHistoryList,
     code: historyCode,
     loading: state.loading.models.coupon,
